@@ -49,6 +49,8 @@ class MainActivity : AppCompatActivity() {
             onBottomNavigationItemSelected(it.itemId)
         }
 
+
+
         setUpCatalog()
         setUpCart()
 
@@ -107,6 +109,9 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
                 catalogItemsAdapter.setItems(catalogItems)
+
+                binding.bottomNavigation.getOrCreateBadge(R.id.cart).number = cartItems.size
+
             }
             onAddCountClickListener = OnAddCountClickListener { item ->
                 catalogItems = catalogItems.map {
@@ -127,6 +132,8 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
                 catalogItemsAdapter.setItems(catalogItems)
+
+                binding.bottomNavigation.getOrCreateBadge(R.id.cart).number = cartItems.size
             }
         }
     }
@@ -185,11 +192,13 @@ class MainActivity : AppCompatActivity() {
                 ScreenMode.CATALOG -> {
                     binding.catalogContainer.visibility = View.VISIBLE
                     binding.cartContainer.visibility = View.GONE
+                    binding.toolbar.setTitle(R.string.catalog_title)
                 }
 
                 ScreenMode.CART -> {
                     binding.catalogContainer.visibility = View.GONE
                     binding.cartContainer.visibility = View.VISIBLE
+                    binding.toolbar.setTitle(R.string.cart_title)
                 }
             }
             currentScreenMode = newScreenMode

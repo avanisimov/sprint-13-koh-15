@@ -1,8 +1,8 @@
 package com.example.sprint13koh15
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.sprint13koh15.databinding.VCatalogItemBinding
@@ -33,11 +33,11 @@ class CatalogItemViewHolder(
             .load(viewData.item.imageUrl)
             .into(binding.image)
         binding.title.text = viewData.item.name
-        binding.price.text = "${viewData.item.price / 100}/${viewData.item.unit}"
+        binding.price.text = "${getStringPrice(viewData.item.floatPrice)} Р/${viewData.item.unit}"
 
-        if (viewData.count != null) {
-            binding.addToCart.visibility = View.GONE
-            binding.countContainer.visibility = View.VISIBLE
+        if (viewData.count != null ) {
+            binding.addToCart.isVisible = viewData.count == 0
+            binding.countContainer.isVisible = viewData.count != 0
             binding.count.text = viewData.count.toString()
         }
     }

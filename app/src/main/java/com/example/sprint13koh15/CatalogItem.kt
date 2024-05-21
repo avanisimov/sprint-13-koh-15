@@ -6,4 +6,11 @@ data class CatalogItem(
     val name: String,
     val price: Long,
     val unit: String,
-)
+) {
+    val floatPrice: Float
+        get() = "${price / 100}.${price % 100}".toFloat()
+}
+
+fun getStringPrice(price: Float): String {
+    return String.format("%.2f", price).replace(".", ",")
+}
