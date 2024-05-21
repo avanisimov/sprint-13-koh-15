@@ -32,7 +32,7 @@ class CatalogItemViewHolder(
             .with(binding.root.context)
             .load(viewData.item.imageUrl)
             .into(binding.image)
-        binding.price.text = "${getStringPrice(viewData.item.price)}/${viewData.item.unit}"
+        binding.price.text = "${getStringPrice(viewData.item.floatPrice)}/${viewData.item.unit}"
         if (viewData.count != null) {
             binding.addToCart.visibility = View.GONE
             binding.countContainer.visibility = View.VISIBLE
