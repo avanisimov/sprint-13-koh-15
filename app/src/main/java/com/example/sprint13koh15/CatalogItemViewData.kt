@@ -33,7 +33,7 @@ class CatalogItemViewHolder(
             .load(viewData.item.imageUrl)
             .into(binding.image)
         binding.title.text = viewData.item.name
-        binding.price.text = "${getStringPrice(viewData.item.floatPrice)}Р/${viewData.item.unit}"
+        binding.price.text = "${getStringPrice(viewData.item.floatPrice)} Р/${viewData.item.unit}"
 
         if (viewData.count != null) {
             binding.addToCart.visibility = View.GONE
